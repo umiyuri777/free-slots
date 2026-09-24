@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>ja</string>
+	<key>CFBundleExecutable</key>
+	<string>FreeSlots</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.umiyuri777.FreeSlots</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>FreeSlots</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>14.0</string>
+	<!-- Dock に出さず、メニューバーだけに常駐する -->
+	<key>LSUIElement</key>
+	<true/>
+	<key>NSHighResolutionCapable</key>
+	<true/>
+	<key>NSCalendarsFullAccessUsageDescription</key>
+	<string>選んだ日の予定を読み取り、予定の入っていない時間帯を計算するために使います。</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>選んだ日の予定を読み取り、予定の入っていない時間帯を計算するために使います。</string>
+</dict>
+</plist>
