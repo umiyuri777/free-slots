@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="docs/icon.png" width="128" alt="FreeSlots のアイコン">
+</p>
+
 # FreeSlots
 
 Google カレンダーの「予定が入っていない時間帯」を、メールに貼れる形でクリップボードにコピーする macOS のメニューバー常駐アプリ。
