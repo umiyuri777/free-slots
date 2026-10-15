@@ -35,26 +35,43 @@ Google カレンダーの「予定が入っていない時間帯」を、メー�
 - キャンセルされた予定、自分が辞退した予定
 - 今日を選んだ場合の、今より前の時間
 
+## インストール
+
+macOS 14 以降。Apple Silicon・Intel のどちらでも動く。
+
+1. [Releases](https://github.com/umiyuri777/free-slots/releases/latest) から `FreeSlots-x.x.zip` をダウンロードして展開する
+2. `FreeSlots.app` を「アプリケーション」フォルダに入れて開く（ウインドウは出ず、メニューバーにアイコンが出る）
+
+ソースからビルドする場合は `make install`（build/FreeSlots.app を作って /Applications にコピーし起動）。
+
+### 「開けません」と出たとき
+
+Apple の公証（notarization）を受けていないので、ダウンロードしたアプリは初回に macOS に止められる。次のどちらかで開けるようになる。
+
+- 一度開こうとした後、システム設定 →「プライバシーとセキュリティ」の下の方にある「このまま開く」を押す
+- ターミナルで次を実行する
+
+  ```bash
+  xattr -dr com.apple.quarantine /Applications/FreeSlots.app
+  ```
+
 ## セットアップ
 
 Google カレンダーは macOS のカレンダーデータベース（EventKit）経由で読む。Google API の登録や OAuth は不要。
 
 1. システム設定 →「インターネットアカウント」で Google アカウントを追加し、「カレンダー」をオンにする
-2. ビルドしてインストール
-
-   ```bash
-   make install   # build/FreeSlots.app を作って /Applications にコピーし起動
-   ```
-
-3. 初回起動時にカレンダーへのアクセスを求められるので「許可」
-4. 設定の「ログイン時に起動」をオンにすると常駐する
+2. FreeSlots を起動し、カレンダーへのアクセスを求められたら「許可」
+3. 設定の「ログイン時に起動」をオンにすると常駐する
 
 ## 開発
 
 ```bash
-make test   # 空き時間計算とテキスト整形のテスト
-make run    # build/FreeSlots.app をビルドして起動
+make test     # 空き時間計算とテキスト整形のテスト
+make run      # build/FreeSlots.app をビルドして起動
+make release  # GitHub Releases に添付する build/FreeSlots-<バージョン>.zip を作る
 ```
+
+リリースは `make release` の後、`gh release create v<バージョン> build/FreeSlots-<バージョン>.zip` で作る。バージョンは `Resources/Info.plist` の `CFBundleShortVersionString`。
 
 - `Sources/FreeSlotsCore` … 空き時間の計算（`FreeSlotCalculator`）とテキスト整形（`SlotTextFormatter`）。UI・EventKit に依存しない
 - `Sources/FreeSlots` … メニューバー UI（SwiftUI の `MenuBarExtra`）と EventKit の読み取り

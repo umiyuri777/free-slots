@@ -9,8 +9,10 @@ set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
-swift build -c release
-BIN_DIR=$(swift build -c release --show-bin-path)
+# Apple Silicon と Intel の両方で動くユニバーサルバイナリにする
+SWIFT_FLAGS=(-c release --arch arm64 --arch x86_64)
+swift build "${SWIFT_FLAGS[@]}"
+BIN_DIR=$(swift build "${SWIFT_FLAGS[@]}" --show-bin-path)
 
 APP=build/FreeSlots.app
 rm -rf "$APP"
